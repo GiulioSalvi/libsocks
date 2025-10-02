@@ -1,0 +1,7 @@
+# Configuration and Binary Folders
+bin/
+.vscode/
+
+# Binary Files
+libsocks
+.DS_Store
