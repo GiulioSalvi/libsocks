@@ -15,7 +15,7 @@
 
 CV=17
 CC=gcc
-CC_FLAGS=-Wall -Wextra -Wpedantic -g --std=c$(CV) -I./h/
+CC_FLAGS=-c -Wall -Wextra -Wpedantic -g --std=c$(CV) -I./h/
 
 ifeq ($(OS), Windows_NT)
 	SO_EXT=.dll
@@ -40,6 +40,7 @@ gen-docs:
 
 static: src/libsocks.c h/libsocks.h
 	$(CC) $(CC_FLAGS) src/libsocks.c -o bin/libsocks.o $(LINKER_FLAGS)
+	ar rcs bin/libsocks.a bin/libsocks.o
 
 shared: src/libsocks.c h/libsocks.h
 	$(CC) $(CC_FLAGS) src/libsocks.c -o bin/libsocks$(SO_EXT)
